@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { CartContext } from "./CartContext"; // Importar el contexto
 
-const Navbar = ({ total }) => {
-  const token = false;
+const Navbar = () => {
+  const { total } = useContext(CartContext); // Consumir el total del carrito
   const navigate = useNavigate();
 
   const handleCartClick = () => {
@@ -20,33 +21,16 @@ const Navbar = ({ total }) => {
             &#127829; Home
           </Link>
         </li>
-        {token ? (
-          <>
-            <li className="navItem">
-              <Link to="/profile" className="boton">
-                &#128275; Perfil
-              </Link>
-            </li>
-            <li className="navItem">
-              <Link to="/logout" className="boton">
-                &#128272; Salir
-              </Link>
-            </li>
-          </>
-        ) : (
-          <>
-            <li className="navItem">
-              <Link to="/login" className="boton">
-                &#128272; Ingresar
-              </Link>
-            </li>
-            <li className="navItem">
-              <Link to="/register" className="boton">
-                &#128272; Registrar
-              </Link>
-            </li>
-          </>
-        )}
+        <li className="navItem">
+          <Link to="/login" className="boton">
+            &#128272; Ingresar
+          </Link>
+        </li>
+        <li className="navItem">
+          <Link to="/register" className="boton">
+            &#128272; Registrar
+          </Link>
+        </li>
       </ul>
       <button className="botonCarro" onClick={handleCartClick}>
         🛒 Total: $ {total.toLocaleString()}

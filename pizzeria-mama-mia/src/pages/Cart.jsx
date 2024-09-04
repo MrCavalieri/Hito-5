@@ -1,15 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CartContext } from "../components/CartContext";
 
-const Cart = ({
-  cartItems,
-  removeFromCart,
-  increaseQuantity,
-  decreaseQuantity,
-}) => {
-  const total = cartItems.reduce(
-    (acc, item) => acc + item.price * (item.quantity || 1),
-    0
-  );
+const Cart = () => {
+  const {
+    cartItems,
+    removeFromCart,
+    increaseQuantity,
+    decreaseQuantity,
+    total,
+  } = useContext(CartContext);
 
   return (
     <div className="productos">

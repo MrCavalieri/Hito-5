@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "../components/Header";
 import CardPizza from "../components/CardPizza";
+import { CartContext } from "../components/CartContext";
 
-const Home = ({ addToCart }) => {
+const Home = () => {
+  const { addToCart } = useContext(CartContext); // Consumir la función para añadir al carrito
   const [pizzas, setPizzas] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
